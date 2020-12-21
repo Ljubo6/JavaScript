@@ -1,6 +1,7 @@
-function solve(side){
-    let a = Number(side);
-    let area = side * side; 
-    console.log(area);
+function solve(input){
+    let usd = Number(input);
+    let lv = usd * 1.79549;
+
+    console.log(lv);
 }
-solve("5");
+solve("12.5");
