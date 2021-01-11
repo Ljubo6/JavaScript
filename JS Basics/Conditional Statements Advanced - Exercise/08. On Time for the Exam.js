@@ -1,15 +1,17 @@
-function solve(examHour,examMinutes,arriveHour,arriveMinutes){
-    examHour = +examHour;
-    examMinutes = +examMinutes;
-    arriveHour = +arriveHour;
-    arriveMinutes = +arriveMinutes;
+function solve(input){
+    let examHour = +input[0];
+    let examMinutes = +input[1];
+    let arriveHour = +input[2];
+    let arriveMinutes = +input[3];
 
     let status = "";
 
     let exam = examHour * 3600 + examMinutes * 60;
     let arrive = arriveHour * 3600 + arriveMinutes * 60;
 
-    if(exam === arrive || (exam != arrive && ((exam - arrive) <= 1800)) ){
+    if(exam === arrive){
+        status = "On time";
+    }else if((exam - arrive) <= 1800 && (exam - arrive) > 0){
         status = "On time";
     }else if(exam < arrive){
         status = "Late";
@@ -68,9 +70,10 @@ function solve(examHour,examMinutes,arriveHour,arriveMinutes){
         }
     }
 }
-solve("10",
-"00",
-"10",
-"00")
+solve(["11",
+"30",
+"12",
+"29"
+])
 
 

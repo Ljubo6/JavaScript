@@ -1,5 +1,6 @@
-function solve(budget,season){
-    budget = Number(budget);
+function solve(input){
+    let budget = Number(input[0]);
+    let season = input[1];
     let destination = "Bulgaria";
     let overnight = "Hotel";
     let price = 0;
@@ -29,6 +30,6 @@ function solve(budget,season){
     }
 
     console.log(`Somewhere in ${destination}`);
-    console.log(`${overnight} – ${price.toFixed(2)}`);
+    console.log(`${overnight} - ${price.toFixed(2)}`);
 }
-solve("678.53", "winter");
+solve(["678.53", "winter"]);

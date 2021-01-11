@@ -1,6 +1,7 @@
-function solve(n1, n2, operator) {
-    n1 = +n1;
-    n2 = +n2;
+function solve(input) {
+    n1 = +input[0];
+    n2 = +input[1];
+    let operator = input[2];
     let result = 0;
     let oddEven = "";
     if (n2 === 0) {
@@ -32,14 +33,16 @@ function solve(n1, n2, operator) {
         }else{
             oddEven = "odd";
         }
-        console.log(`${n1} ${operator} ${n2} = ${result} – ${oddEven}`);
-    }else{
+        console.log(`${n1} ${operator} ${n2} = ${result} - ${oddEven}`);
+    }else if(operator === "%"){
         console.log(`${n1} ${operator} ${n2} = ${result}`);
+    }else{
+        console.log(`${n1} ${operator} ${n2} = ${result.toFixed(2)}`);
     }
 }
-solve("7",
+solve(["7",
 "3",
-"*")
+"*"])
 
 
 ;

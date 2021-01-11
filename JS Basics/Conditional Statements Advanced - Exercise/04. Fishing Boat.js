@@ -1,6 +1,7 @@
-function solve(budget,season,fishmanNum){
-    budget = +budget;
-    fishmanNum = +fishmanNum;
+function solve(input){
+    let budget = +input[0];
+    let season = input[1];
+    let fishmanNum = +input[2];
 
     let price = 0;
 
@@ -38,8 +39,8 @@ function solve(budget,season,fishmanNum){
     }
 
 }
-solve("3000",
+solve(["3000",
 "Summer",
-"11")
+"11"])
 
 ;

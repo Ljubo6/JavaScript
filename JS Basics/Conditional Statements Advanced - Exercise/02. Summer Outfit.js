@@ -1,5 +1,6 @@
-function solve(degree, day) {
-    degree = +degree;
+function solve(input) {
+    let degree = +input[0];
+    let day = input[1];
 
     let outfit = "";
     let shoes = "";
@@ -55,7 +56,7 @@ function solve(degree, day) {
     }
     console.log(`It's ${degree} degrees, get your ${outfit} and ${shoes}.`)
 }
-solve("22",
-"Afternoon")
+solve(["22",
+"Afternoon"])
 
     ;

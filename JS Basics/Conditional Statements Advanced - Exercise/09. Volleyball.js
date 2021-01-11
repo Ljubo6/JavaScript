@@ -1,6 +1,7 @@
-function solve(yearType,hollidays,weekends){
-    hollidays = +hollidays;
-    weekends = +weekends;
+function solve(input){
+    let yearType = input[0];
+    let hollidays = +input[1];
+    let weekends = +input[2];
 
     let weekendsInSofia = 48 - weekends;
 
@@ -17,9 +18,9 @@ function solve(yearType,hollidays,weekends){
     }
     console.log(Math.floor(allGames));
 }
-solve("normal",
+solve(["normal",
 "6",
-"13")
+"13"])
 
 
 

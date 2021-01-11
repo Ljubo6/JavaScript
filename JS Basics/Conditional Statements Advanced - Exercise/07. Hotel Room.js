@@ -1,5 +1,6 @@
-function solve(month,days){
-    days = Number(days);
+function solve(input){
+    let month = input[0];
+    let days = Number(input[1]);
     let priceApartment = 0;
     let priceStudio = 0;
 
@@ -45,8 +46,8 @@ function solve(month,days){
     console.log(`Studio: ${priceStudio.toFixed(2)} lv.`)
 
 }
-solve("August",
-"20")
+solve(["August",
+"20"])
 
 
 ;

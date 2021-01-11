@@ -1,6 +1,7 @@
-function solve(typeMovie,row,col){
-    row = +row;
-    col = +col;
+function solve(input){
+    let typeMovie = input[0];
+    let row = +input[1];
+    let col = +input[2];
     let price = 0;
     if(typeMovie === "Premiere"){
         price = row * col * 12.00;
@@ -11,7 +12,7 @@ function solve(typeMovie,row,col){
     }
     console.log(`${price.toFixed(2)} leva`)
 }
-solve("Premiere",
+solve(["Premiere",
 "10",
-"12")
+"12"])
 ;

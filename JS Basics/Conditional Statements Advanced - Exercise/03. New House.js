@@ -1,6 +1,7 @@
-function solve(flowers, quantity, budget) {
-    quantity = +quantity;
-    budget = +budget;
+function solve(input) {
+    let flowers = input[0];
+    let quantity = +input[1];
+    let budget = +input[2];
 
     let price = 0;
 
@@ -40,9 +41,9 @@ function solve(flowers, quantity, budget) {
     }
 
 }
-solve("Narcissus",
+solve(["Narcissus",
 "119",
-"360")
+"360"])
 
 
     ;
