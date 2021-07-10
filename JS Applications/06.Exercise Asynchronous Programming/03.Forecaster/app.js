@@ -65,8 +65,6 @@ async function getWeather(){
     
         document.getElementById('forecast').style.display = 'block';
     } catch (e) {
-        // document.getElementById('forecast').style.display = 'block';
-        // return document.getElementById('current').textContent = 'Error'
         alert('Error')
     }
 }

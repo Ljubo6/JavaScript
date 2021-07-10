@@ -18,7 +18,6 @@ async function lockedProfile() {
         let username = x.username;
         let id = x._id;
         let index = i + 1;
-        // console.log(age,email,username,id,index);
 
 
         let htmlProfile = createUser(age, email, username, index);
