@@ -1,0 +1,13 @@
+<main>
+
+    <section id="all-listings">
+        {{#each housings}}
+            {{> houseForRecent}}
+        {{else}}
+            <!-- If there are still no offers for housing in the database display: -->
+            <div class="no-data-listing">
+                <p class="no-offer">There are no housing offers found...</p>
+            </div>
+        {{/each}}
+    </section>
+</main>
