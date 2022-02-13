@@ -1,0 +1,24 @@
+<main>
+    <h1>Welcome to SoftUni Wiki!</h1>
+    {{#if errors}}
+        <section id="notifications">
+            {{#each errors}}
+                <p>{{this}}</p>
+            {{/each}}
+        </section>
+    {{/if}}
+    <section>
+        <h2>Register</h2>
+        <div class="spacer">
+            <form action="/auth/register" method="POST">
+                <label>Username:</label>
+                <input type="text" name="username" value="{{userData.username}}">
+                <label>Password:</label>
+                <input type="password" name="password">
+                <label>Repeat password:</label>
+                <input type="password" name="rePass">
+                <input type="submit" value="Register">
+            </form>
+        </div>
+    </section>
+</main>
