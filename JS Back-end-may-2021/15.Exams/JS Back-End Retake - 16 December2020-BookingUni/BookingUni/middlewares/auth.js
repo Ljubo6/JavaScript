@@ -24,8 +24,11 @@ module.exports = () =>  (req, res, next) => {
 }
 
 async function register(email,username, password) {
-    const existing = await userService.getUserByUsername(username)
-    if (existing) {
+    const existUsername = await userService.getUserByUsername(username)
+    const existEmail = await userService.getUserByEmail(email)
+    if(existEmail){
+        throw new Error('Email is taken!')
+    }else if (existUsername) {
         throw new Error('Username is taken!')
     }
 
@@ -37,6 +40,7 @@ async function register(email,username, password) {
 
 async function login(username, password) {
     const user = await userService.getUserByUsername(username)
+
 
     if (!user) {
         const err = new Error('No such user')
