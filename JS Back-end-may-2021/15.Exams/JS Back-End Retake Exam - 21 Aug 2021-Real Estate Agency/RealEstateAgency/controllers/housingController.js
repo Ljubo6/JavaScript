@@ -91,12 +91,7 @@ router.post('/edit/:id',isUser(),
     body('city').isLength({min:4}).withMessage('City name must be oa least 4 characters long!'),
     body('description').isLength({max:60}).withMessage('Description must be at most 60 characters long!'),
     body('pieces').isInt({min:0,max:10}).withMessage('Pieces must be between 0 and 10!'),
-    body('imageUrl').custom((value) => {
-        if (!value.startsWith('http') || !value.startsWith('https')) {
-            throw  new Error('The url must starts with http or https')
-        }
-        return true
-    }),
+    body('imageUrl').matches(RegExp(/^https?/)).withMessage('The url must starts with http or https'),
     async(req,res) => {
     try{
         const house = await req.storage.getHouseById(req.params.id)
