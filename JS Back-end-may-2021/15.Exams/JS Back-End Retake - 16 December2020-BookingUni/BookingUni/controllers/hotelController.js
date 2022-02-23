@@ -10,12 +10,7 @@ router.post('/create'
     body('name').isLength({min:4}).withMessage('Name must be at least 4 characters long!'),
     body('city').isLength({min:3}).withMessage('City must be at least 3 characters long!'),
     body('freeRooms').isLength({min:1,max:100}).withMessage('Free rooms must be between 1 and 100!'),
-    body('imageUrl').custom((value) => {
-        if (!value.startsWith('http') || !value.startsWith('https')) {
-            throw  new Error('The url must starts with http or https')
-        }
-        return true
-    }),
+    body('imageUrl').matches(RegExp(/^https?/)).withMessage('The url must starts with http or https'),
     async(req,res) => {
         const {errors} = validationResult(req)
         try {
