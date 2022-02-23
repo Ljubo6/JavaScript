@@ -5,7 +5,7 @@ const schema = new Schema({
     type: {type: String,enum:['Apartment','Villa','House'],required: [true,'Type is required']},
     year:{type: Number, required: [true,'Year is required']},
     city:{type:String,required:[true,'City is required']},
-    imageUrl:{type:String,required:[true,'Home image is required'],validate: [/^https?:\/\//i, 'Image url is invalid']},
+    imageUrl:{type:String,required:[true,'Home image is required']},
     description:{type:String,required:[true,'Description is required']},
     pieces:{type: Number, required: [true,'Available pieces are required']},
     rentedHome:[{type: Schema.Types.ObjectId,ref:'User',default:[]}],
