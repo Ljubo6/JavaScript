@@ -1,113 +1,104 @@
 window.addEventListener('load', solution);
 
 function solution() {
-  
-  let submitBtn = document.getElementById('submitBTN');
-  submitBtn.addEventListener('click', cretePreviewList);
 
-  let editBtn = document.getElementById('editBTN');
-  editBtn.addEventListener('click', returnFormToEdit);
+  const editBtn = document.querySelector('#editBTN')
+  const continueBtn = document.querySelector('#continueBTN')
+  continueBtn.addEventListener('click',() => {
+    const container = document.querySelector('#block')
+    container.innerHTML = ''
+    const h3 = createElement('h3','Thank you for your reservation!')
+    container.appendChild(h3)
+  })
 
-  let continueBtn = document.getElementById('continueBTN');
-  continueBtn.addEventListener('click', continueFunction)
+  const fullNameInput = document.querySelector('#fname')
+  const emailInput = document.querySelector('#email')
+  const phoneInput = document.querySelector('#phone')
+  const addressInput = document.querySelector('#address')
+  const codeInput = document.querySelector('#code')
+  const submitBTN = document.querySelector('#submitBTN')
 
-  let fullNameRef = document.getElementById('fname');
-  let emailRef = document.getElementById('email');
-  let phoneNumberRef = document.getElementById('phone');
-  let addressRef = document.getElementById('address');
-  let postalCodeRef = document.getElementById('code');
+  let arrInput = []
 
-  let ulPreviewRef = document.getElementById('infoPreview');
 
-  let div = document.querySelector('#block');
+  submitBTN.addEventListener('click',createInfoCard)
 
-  let info = {fullName :'', email : '', phoneNumber: '', address : '', postalCode : ''};
 
-  function cretePreviewList(e) {
-    e.preventDefault();
-
-    if (fullNameRef.value === '' || emailRef.value === '') {
-      return;
+  function createInfoCard(event){
+    event.preventDefault()
+    if (fullNameInput.value === '' || emailInput.value === ''){
+      return
     }
 
-    let fullNameLi = createElement('li', `Full Name:${fullNameRef.value}`);
-    let emailLi = createElement('li', `Email:${emailRef.value}`);
-    let phoneNumberLi = createElement('li', `Phone Number:${phoneNumberRef.value}`);
-    let addressLi = createElement('li', `Address:${addressRef.value}`);
-    let postalCodeLi = createElement('li', `Postal Code:${postalCodeRef.value}`);
+    const infoCard = document.querySelector('#infoPreview')
 
-    ulPreviewRef.appendChild(fullNameLi);
-    ulPreviewRef.appendChild(emailLi);
-    ulPreviewRef.appendChild(phoneNumberLi);
-    ulPreviewRef.appendChild(addressLi);
-    ulPreviewRef.appendChild(postalCodeLi);
-
-    fullName = fullNameRef.value;
-    email = emailRef.value;
-    phoneNumber = phoneNumberRef.value;
-    address = addressRef.value;
-    postalCode = postalCodeRef.value;
-
-    info = {fullName, email, phoneNumber, address, postalCode};
-
-    fullNameRef.value = '';
-    emailRef.value = '';
-    phoneNumberRef.value = '';
-    addressRef.value = '';
-    postalCodeRef.value = '';
-
-    submitBtn.disabled = true;
-    editBtn.disabled = false;
-    continueBtn.disabled = false;
-
-  }
+    const fullName = createElement('li',`Full Name: ${fullNameInput.value}`)
+    const email = createElement('li',`Email: ${emailInput.value}`)
+    const phone = createElement('li',`Phone Number: ${phoneInput.value}`)
+    const address = createElement('li',`Address: ${addressInput.value}`)
+    const code = createElement('li',`Postal Code: ${codeInput.value}`)
 
 
 
-  function returnFormToEdit() {
+    arrInput = [fullNameInput.value,emailInput.value,phoneInput.value,addressInput.value,codeInput.value]
 
-    let {fullName, email, phoneNumber, address, postalCode} = info;
+    const arr = [fullName,email,phone,address,code]
+    appendElements(arr,infoCard)
 
-    fullNameRef.value = fullName;
-    emailRef.value = email;
-    phoneNumberRef.value = phoneNumber;
-    addressRef.value = address;
-    postalCodeRef.value = postalCode;
+    submitBTN.setAttribute('disabled','')
 
+    fullNameInput.value = ''
+    emailInput.value = ''
+    phoneInput.value = ''
+    addressInput.value = ''
+    codeInput.value = ''
 
-    submitBtn.disabled = false;
-    editBtn.disabled = true;
-    continueBtn.disabled = true;
+    changeAttributeEnable()
 
-    let lis = ulPreviewRef.querySelectorAll('li');
-    for (let i = 0; li = lis[i]; i++) {
-      li.parentElement.removeChild(li);
+    editBtn.addEventListener('click',editInfoForm)
+    function editInfoForm(event){
+      fullNameInput.value = arrInput[0]
+      emailInput.value = arrInput[1]
+      phoneInput.value = arrInput[2]
+      addressInput.value = arrInput[3]
+      codeInput.value = arrInput[4]
+
+      submitBTN.removeAttribute('disabled')
+      submitBTN.setAttribute('enabled','')
+      infoCard.innerHTML = ''
+      changeAttributeDisable()
     }
   }
 
-  function continueFunction() {
+  function changeAttributeEnable(){
+    editBtn.removeAttribute('disabled')
+    editBtn.setAttribute('enabled','')
 
-    let lis = ulPreviewRef.querySelectorAll('li');
-    for (let i = 0; li = lis[i]; i++) {
-      li.parentElement.removeChild(li);
-    }
-    submitBtn.disabled = false;
-    editBtn.disabled = true;
-    continueBtn.disabled = true;
-
-    let h3 = createElement('h3', 'Thank you for reservation!');
-    while (div.firstChild) {
-      div.removeChild(div.firstChild);
-    }
-    div.appendChild(h3);
+    continueBtn.removeAttribute('disabled')
+    continueBtn.setAttribute('enabled','')
   }
 
-  function createElement(type, content, className) {
-    const result = document.createElement(type);
-    result.textContent = content;
-    if (className) {
-      result.className = className;
+  function changeAttributeDisable(){
+
+    editBtn.removeAttribute('enabled')
+    editBtn.setAttribute('disabled','')
+
+    continueBtn.removeAttribute('enabled')
+    continueBtn.setAttribute('disabled','')
+  }
+  function appendElements(arr,infoCard){
+    arr.forEach(e => infoCard.appendChild(e))
+    return infoCard
+  }
+  function createElement(type,elementValue,className){
+    const element = document.createElement(type)
+
+    if (elementValue){
+      element.textContent = elementValue
     }
-    return result;
+    if(className){
+      element.classlist.add(className)
+    }
+    return element
   }
 }
